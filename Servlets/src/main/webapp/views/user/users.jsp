@@ -48,7 +48,7 @@
                         <input type="hidden" name="id" value="${ user.id }" id="idUser">
                         <button type="submit" class="btn btn-outline-primary"><i class="fas fa-edit"></i> Modificar</button>
                     </form>
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#delete" onclick="recibir(${ user.id });"> Eliminar </button>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete" onclick="recibir('${ user.id }','${ user.idPerson.name}' );"><i class="fas fa-trash"></i> Eliminar </button>
 
                 </c:if>
                 <c:if test="${ user.status == 0 }">
@@ -69,7 +69,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <label>¿Estas seguro de eliminarlo?</label>
+                ¿Estas seguro de eliminarlo?
+                <br>
+                <b><span id="nombre"></span><b>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cerrar</button>
@@ -83,9 +85,10 @@
     </div>
 </div>
 <script language="javascript">
-    function recibir(numero)
+    function recibir(idUser, nombre)
     {
-        document.getElementById("codigo").value=numero;
+        document.getElementById("nombre").innerHTML=nombre
+        document.getElementById("codigo").value=idUser;
     }
 </script>
 <script src="${context}/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
